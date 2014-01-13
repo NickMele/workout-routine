@@ -1,7 +1,8 @@
 WorkoutRoutine.Router.map(function () {
 
-	this.resource('account');
-
-	this.resource('routines');
+	this.resource('plans');
+	this.resource('plan', { path: 'plans/:plan_id' }, function() {
+		this.resource('routineCreate', { path: '/routine/create' });
+	});
 
 });

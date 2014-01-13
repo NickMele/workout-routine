@@ -2,8 +2,9 @@
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+var path = require('path');
 var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
+    return connect.static(path.resolve(dir));
 };
 
 // # Globbing
@@ -290,6 +291,14 @@ module.exports = function (grunt) {
                 src: '<%= yeoman.app %>/scripts/app.js',
                 dest: '.tmp/scripts/combined-scripts.js'
             }
+        },
+        express: {
+            api: {
+                options: {
+                    server: path.resolve('./server', 'server.js'),
+                    port: 9001
+                }
+            }
         }
     });
 
@@ -302,9 +311,10 @@ module.exports = function (grunt) {
             'clean:server',
             'concurrent:server',
             'neuter:app',
+            'express',
             'connect:livereload',
             'open',
-            'watch'
+            'watch',
         ]);
     });
 

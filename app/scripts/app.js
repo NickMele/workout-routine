@@ -1,4 +1,6 @@
-var WorkoutRoutine = window.WorkoutRoutine = Ember.Application.create();
+var WorkoutRoutine = window.WorkoutRoutine = Ember.Application.create({
+	LOG_TRANSITIONS: true
+});
 
 /* Order and include as you please. */
 require('scripts/controllers/*');
