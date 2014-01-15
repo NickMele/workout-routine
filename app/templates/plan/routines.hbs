@@ -1,15 +1,6 @@
 {{#each routine in routines itemController="routine"}}
 	<div class="routine">
-		<button {{action "editRoutine"}}>Edit</button>
-		<h2 class="routine-title">{{routine.name}}</h2>
-		<ul class="workouts-list">
-			{{#each workout in routine.workouts}}
-				<li>
-					{{workout.name}}
-				</li>
-			{{/each}}
-		</ul>
+		{{#link-to "routine" this}}{{routine.name}}{{/link-to}}
+		<p>{{routine.description}}</p>
 	</div>
 {{/each}}
-
-{{outlet routineCreate}}

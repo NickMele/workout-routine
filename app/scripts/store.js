@@ -6,5 +6,5 @@ WorkoutRoutine.ApplicationAdapter = DS.RESTAdapter.extend({
 });
 
 WorkoutRoutine.ApplicationSerializer = DS.RESTSerializer.extend({
-  primaryKey: '_id'
+	primaryKey: '_id'
 });

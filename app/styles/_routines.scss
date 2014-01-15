@@ -1,17 +1,14 @@
 .routine {
-	float: left;
-	width: 25%;
-	margin: 0;
-	padding: 0;
-	border: 1px solid rgba(0,0,0,.1);
+	padding: modular-scale(.5, $base-size);
+	border-bottom: 1px solid $border-color;
 
-	.routine-title {
-
+	&:last-of-type {
+		border-bottom: none;
 	}
 
-	.workouts-list {
-		margin: 0;
-		padding: 0;
-		list-style: none;
+	p {
+		color: rgba(100,100,100,.8);
+		line-height: modular-scale(.5, $base-size);
+		padding-top: modular-scale(-1.5, $base-size);
 	}
 }

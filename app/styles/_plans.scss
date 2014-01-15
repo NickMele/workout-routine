@@ -11,3 +11,35 @@
 		}
 	}
 }
+
+.sidebar {
+	.navigation {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li {
+			border-bottom: 1px solid $border-color;
+			&:last-of-type {
+				border-bottom: 0;
+			}
+			a {
+				padding: modular-scale(.5, $base-size);
+				display: block;
+				position: relative;
+				&.active {
+					font-weight: 700;
+					&:after {
+						content: " ";
+						display: block;
+						position: absolute;
+						width: 3px;
+						height: 100%;
+						top: 0;
+						left: 0;
+						background: rgba(0,100,150,1);
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+@mixin header {
+	.header {
+		padding: modular-scale(.5, $base-size);
+		border-bottom: 2px solid $border-color;
+		font-weight: 700;
+		font-size: modular-scale(.5, $base-size);
+	}
+}

@@ -1,7 +1,10 @@
-WorkoutRoutine.RoutineCreateRoute = Em.Route.extend({
+WorkoutRoutine.RoutineCreateRoute = Ember.Route.extend({
 
 	model: function() {
-		return this.store.createRecord('routine');
+		return Ember.Object.create({
+			'routine': this.store.createRecord('routine'),
+			'workouts': this.store.find('workout')
+		});
 	},
 
 	renderTemplate: function() {

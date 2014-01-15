@@ -1,9 +1,10 @@
 <div class="routine routine-edit">
 	<form {{action "save" on="submit"}}>
-		{{input value=name}}
+    	{{input value=model.name}}
 
-		{{textarea value=description}}
+		{{textarea value=model.description}}
 
 		<input type="submit" value="save"/>
+        {{#link-to "routine" model}}Cancel{{/link-to}}
 	</form>
 </div>

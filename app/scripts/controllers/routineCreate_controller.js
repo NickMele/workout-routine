@@ -1,12 +1,31 @@
-WorkoutRoutine.RoutineCreateController = Em.ObjectController.extend({
+WorkoutRoutine.RoutineCreateController = Em.Controller.extend({
 
 	needs: "plan",
 
+	selectedWorkout: null,
+
 	actions: {
+
+		addWorkoutToRoutine: function() {
+
+			var routineWorkouts = this.get('model.routine.workouts'),
+				selectedWorkout = this.get('selectedWorkout'),
+				workouts = this.get('model.workouts');
+
+			selectedWorkout = workouts.filterBy('id', selectedWorkout).get('firstObject');
+
+			routineWorkouts.then(function() {
+				routineWorkouts.pushObject(selectedWorkout);
+			});
+
+			this.set('selectedWorkout', null);
+
+		},
+
 		save: function() {
 
 			var scope = this,
-				routine = scope.get('model');
+				routine = scope.get('model.routine');
 
 			routine.setProperties({
 				'creationDate': new Date()
@@ -25,6 +44,16 @@ WorkoutRoutine.RoutineCreateController = Em.ObjectController.extend({
 				});
 
 			});
+
+		},
+
+		cancel: function() {
+
+			var routine = this.get('model.routine');
+
+			routine.deleteRecord();
+
+			this.transitionToRoute('plan');
 
 		}
 	}

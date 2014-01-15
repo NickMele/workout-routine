@@ -1,25 +1,65 @@
 html {
-	font-size: 62.5%;
+	font-size: $base-font-size;
+	background: rgba(225,225,225,.25);
 }
 
 body {
-	font-size: 1.3rem;
+	font-size: $base-size;
+	margin: 0;
+	padding: 0;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
 	margin: 0;
 	padding: 0;
 }
 
 a {
 	text-decoration: none;
-	color: rgba(0,0,0,.9);
+	color: rgba(0,0,100,.75);
 	&:hover {
-		color: rgba(0,0,0,1);
+		color: rgba(0,0,50,1);
 	}
 }
 
-.container {
+.wrapper {
 	@include clearfix;
-	margin: 2rem auto;
-	width: 90%;
-	border-radius: 3px;
-	box-shadow: 0 0 5px 5px rgba(0,0,0,.1);
+	padding: modular-scale(1, $base-size);
+}
+
+.sidebar {
+	width: 25%;
+	margin: 0;
+	float: left;
+	border: 1px solid $border-color;
+	box-sizing: border-box;
+	@include single-box-shadow($shadow-color, 0, 0, $shadow-blur);
+	background: white;
+	border-radius: 2px;
+
+	@include header
+}
+
+.container-wrapper {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	padding-left: modular-scale(1, $base-size);
+	float: left;
+	width: 75%;
+
+	.container {
+		border: 1px solid $border-color;
+		border-radius: 2px;
+		background: white;
+		@include single-box-shadow($shadow-color, 0, 0, $shadow-blur);
+
+		@include header
+	}
 }
