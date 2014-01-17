@@ -1,14 +1,27 @@
-<div class="sidebar">
-	<div class="header">
-		{{name}}
+<div class="sidebar-wrapper">
+	<div class="sidebar-container">
+		<div class="header">
+			{{name}}
+		</div>
+
+		{{partial "plan/navigation"}}
+
 	</div>
 
-	{{partial "plan/navigation"}}
-
+	<div class="sidebar-container">
+		<div class="header header-small">
+			Options
+		</div>
+		<ul class="navigation">
+			<li><a href="">Option 1</a></li>
+			<li><a href="">Option 2</a></li>
+			<li><a href="">Option 3</a></li>
+		</ul>
+	</div>
 </div>
 
 <div class="container-wrapper">
-	<div class="container">
+	<div class="main-container">
 		{{outlet}}
 	</div>
 </div>

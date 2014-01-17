@@ -1,14 +1,20 @@
-.routine {
-	padding: modular-scale(.5, $base-size);
-	border-bottom: 1px solid $border-color;
+.link-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 
-	&:last-of-type {
-		border-bottom: none;
-	}
+	li {
+		padding: modular-scale(.5, $base-size);
+		border-bottom: 1px solid $border-color-light;
 
-	p {
-		color: rgba(100,100,100,.8);
-		line-height: modular-scale(.5, $base-size);
-		padding-top: modular-scale(-1.5, $base-size);
+		&:last-of-type {
+			border-bottom: none;
+		}
+
+		p {
+			color: rgba(100,100,100,.8);
+			line-height: modular-scale(.5, $base-size);
+			padding-top: modular-scale(-1.5, $base-size);
+		}
 	}
 }

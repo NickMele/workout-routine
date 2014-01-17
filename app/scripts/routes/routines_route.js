@@ -1,11 +1,14 @@
 WorkoutRoutine.RoutinesIndexRoute = Ember.Route.extend({
-	model: function(params) {
+
+	model: function() {
 		return this.modelFor('plan');
 	},
 
 	renderTemplate: function() {
-		this.render('plan/routines', {
-			into: 'plan'
+		this.render('routines', {
+			into: 'plan',
+			controller: 'routines.index'
 		});
 	}
+
 });

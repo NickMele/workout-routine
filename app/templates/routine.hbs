@@ -1,9 +1,10 @@
 <div class="header">{{name}}</div>
 
-{{#link-to "routine.edit" this}}Edit{{/link-to}}
-
-<ul>
+<ul class="link-list">
 	{{#each workout in workouts}}
-		<li>{{workout.name}}</li>
+		<li>
+			{{#link-to "routine.workout" workout}}{{workout.name}}{{/link-to}}
+		</li>
 	{{/each}}
 </ul>
+{{#link-to "routine.edit"}}Edit{{/link-to}}

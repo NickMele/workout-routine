@@ -1,7 +1,8 @@
 $base-font-size: 62.5%;
 $base-size: 1.3rem;
 
-$shadow-color: rgba(150,150,150,.1);
-$shadow-blur: modular-scale(.5, $base-size);
+$shadow-color: rgba(250,250,250,.1);
+$shadow-blur: modular-scale(1, $base-size);
 
-$border-color: rgba(0,0,0,.1);
+$border-color: rgba(20,20,20,.25);
+$border-color-light: rgba(175,175,175,.5);

@@ -1,0 +1,8 @@
+<ul class="link-list">
+	{{#each routine in routines itemController="routine.index"}}
+		<li>
+			{{#link-to "routine" this}}{{routine.name}}{{/link-to}}
+			<p>{{routine.description}}</p>
+		</li>
+	{{/each}}
+</ul>
