@@ -1,11 +1,12 @@
 WorkoutRoutine.PlanRoute = Ember.Route.extend({
-	model: function(params) {
-		return this.store.find('plan', params.plan_id);
-	},
+	setupController: function(controller, model) {
+		this._super(controller, model);
+		controller.set('weekdays', this.store.find('weekday'));
+	}
+});
 
-	renderTemplate: function() {
-		this.render('plan', {
-			into: 'application'
-		});
+WorkoutRoutine.PlanIndexRoute = Ember.Route.extend({
+	model: function() {
+		return this.modelFor('plan');
 	}
 });

@@ -1,0 +1,22 @@
+<div class="header">
+	My plans
+	<span class="count">{{totalPlans}}</span>
+</div>
+
+<ul class="link-list">
+	{{#each plan in model itemController="plan.index"}}
+		<li>
+			{{#if showOptions}}
+				<button {{bind-attr class=":button :button-small plan.active:button-red:button-green"}} {{action "toggleStatus"}}>{{planStateAction}}</button>
+			{{else}}
+				<button {{bind-attr class=":button :button-small plan.active:button-green:button-red"}} {{action "showOptions"}}>{{planState}}</button>
+			{{/if}}
+			{{#link-to 'plan' plan}} {{plan.name}} {{/link-to}}
+		</li>
+	{{/each}}
+
+	<li>
+		<button {{bind-attr class=":button :button-blue newPlanName::hidden"}} {{action "create"}}>Create plan</button>
+		{{input type="text" placeholder="Start a new plan..." value=newPlanName action="create" class="blend"}}
+	</li>
+</ul>

@@ -1,7 +1,16 @@
 var Workout = require('../models/workout').Workout;
 
 exports.index = function(req, res) {
-	Workout.find({}, function(err, docs) {
+
+    console.log('getting workouts: ', req.query.ids);
+
+    var conditions = {}
+
+    if (req.query.ids) {
+        conditions._id = { $in: req.query.ids };
+    }
+
+	Workout.find(conditions, function(err, docs) {
 		if(!err) {
 			res.json(200, { workouts: docs });
 		} else {
@@ -12,7 +21,7 @@ exports.index = function(req, res) {
 
 exports.add = function(req, res) {
 
-	var workout = req.body;
+	var workout = req.body.workout;
 
 	console.log('Adding workout: ' + JSON.stringify(workout));
 
@@ -20,7 +29,7 @@ exports.add = function(req, res) {
 
 	Workout.create(workout, function(err, workout) {
 		if(!err) {
-			res.json(201, {message: "Workout added with name: " + workout.name });
+			res.json(201, { workouts: workout });
 		} else {
 			res.json(500, {message: "Could not add workout. Error: " + err});
 		}
@@ -49,7 +58,7 @@ exports.findById = function(req, res) {
 exports.update = function(req, res) {
 
 	var id = req.params.id,
-    	workout = req.body;
+    	workout = req.body.workout;
 
     console.log('Updating workout: ' + id);
     console.log(JSON.stringify(workout));
@@ -59,6 +68,7 @@ exports.update = function(req, res) {
     	if (!err) {
     		res.json(200, { workouts: workout });
     	} else {
+            console.log(err);
     		res.json(500, { message: err });
     	}
 

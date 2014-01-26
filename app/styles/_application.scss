@@ -1,7 +1,8 @@
 html {
 	font-size: $base-font-size;
+	color: $base-font-color;
 	background: rgba(0,0,0,.65);
-	background: image-url('stressed_linen.png') top left repeat;
+	background: $application-background top left repeat;
 }
 
 body {
@@ -18,54 +19,77 @@ h4,
 h5,
 p {
 	margin: 0;
-	padding: 0;
+	padding: modular-scale(1, $base-size);
 }
 
 a {
 	text-decoration: none;
 	color: rgba(0,0,100,.75);
 	&:hover {
+		cursor: pointer;
 		color: rgba(0,0,50,1);
 	}
 }
 
 .wrapper {
-	@include clearfix;
-	padding: modular-scale(2, $base-size);
+	@extend .clearfix;
+	margin: 0 auto;
+	padding: modular-scale(1, $base-size) 0;
+	max-width: $max-width;
 }
 
-.container {
-	// border: 1px solid $border-color;
-	margin-bottom: modular-scale(1, $base-size);
+.box {
 	box-sizing: border-box;
 	@include single-box-shadow($shadow-color, 0, 0, $shadow-blur);
-	background: rgba(255,255,255,.90);
+	background: rgba(255,255,255,.9);
 	border-radius: 2px;
+	margin: modular-scale(1, $base-size);
+	position: relative;
+	overflow: hidden;
 }
 
-.sidebar-wrapper {
-	width: 25%;
-	margin: 0;
+.sidebar {
 	float: left;
-	box-sizing: border-box;
-
-	.sidebar-container {
-		@extend .container;
-		@include header;
-	}
+	width: 25%;
 }
 
-.container-wrapper {
-	margin: 0;
-	padding: 0;
-	padding-left: modular-scale(2, $base-size);
+.main-content {
 	float: left;
 	width: 75%;
-	box-sizing: border-box;
+}
 
-	.main-container {
-		@extend .container;
-		@include header;
+.header {
+	@extend .clearfix;
+	padding: modular-scale(.5, $base-size);
+	border-bottom: 2px solid $border-color;
+	font-weight: 700;
+	font-size: modular-scale(.5, $base-size);
+	color: rgba(0,0,0,.75);
+
+	.sub-title {
+		font-size: modular-scale(0, $base-size);
+		font-weight: 400;
+		line-height: modular-scale(1, $base-size);
+		color: rgba(100,100,100,.75);
+	}
+
+	&.header-small {
+		font-size: modular-scale(0, $base-size);
+		padding-top: modular-scale(0, $base-size);
+		padding-bottom: modular-scale(0, $base-size);
+	}
+
+	.button {
+		margin-top: -(modular-scale(-1.5, $base-size));
+		margin-bottom: -(modular-scale(-1.5, $base-size));
+	}
+	.button-small {
+		margin-top: -(modular-scale(-3, $base-size));
+		margin-bottom: -(modular-scale(-3, $base-size));
+	}
+
+	> .button:last-of-type {
+		margin-left: modular-scale(-1, $base-size);
 	}
 }
 
@@ -82,22 +106,28 @@ a {
 			padding: modular-scale(.5, $base-size);
 			display: block;
 			position: relative;
-			&.active {
-				font-weight: 700;
-				&:after {
-					content: " ";
-					display: block;
-					position: absolute;
-					width: 3px;
-					height: 100%;
-					top: 0;
-					left: 0;
-					background: rgba(0,100,150,1);
-				}
-			}
 			&:active {
 				background: rgba(0,100,150,.1);
 			}
 		}
 	}
+}
+
+.panel {
+	position: fixed;
+	top: 0;
+	right: -25%;
+	width: 25%;
+	height: 100%;
+	box-sizing: border-box;
+	@include single-box-shadow($shadow-color, -1px, 0, $shadow-blur);
+	background: rgba(255,255,255,.95);
+	border-radius: 2px 0 0 2px;
+	transition: right 200ms cubic-bezier(0.77, 0, 0.175, 1); /* easeOutBack */
+
+	&.open {
+		right: 0;
+
+	}
+
 }

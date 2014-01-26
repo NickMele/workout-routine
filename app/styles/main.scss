@@ -1,11 +1,15 @@
-@import "compass/utilities/general/clearfix";
 @import "compass/css3/box-shadow";
 @import "modular-scale";
 
-@import "variables";
-@import "mixins";
-
 @import "normalize";
+@import "variables";
+@import "utilities";
+
 @import "application";
-@import "plans";
-@import "routines";
+
+@import "lists";
+@import "buttons";
+@import "forms";
+
+@import "plan";
+@import "routine";

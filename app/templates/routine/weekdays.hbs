@@ -1,0 +1,5 @@
+{{#each weekday in days}}
+	{{#weekday-button weekday=weekday routineWeekdays=weekdays}}
+		{{weekday.name.[0]}}
+	{{/weekday-button}}
+{{/each}}
