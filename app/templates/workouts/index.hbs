@@ -1,0 +1,10 @@
+<ul class="link-list">
+	{{#each workout in model}}
+		<li>
+			{{#link-to "workout" workout}}{{workout.name}}{{/link-to}}
+			<p>{{workout.description}}</p>
+		</li>
+	{{/each}}
+</ul>
+
+{{outlet}}

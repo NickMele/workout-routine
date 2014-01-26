@@ -1,4 +1,4 @@
-WorkoutRoutine.PlansRoute = Ember.Route.extend({
+WorkoutRoutine.PlansIndexRoute = Ember.Route.extend({
 	model: function() {
 		return this.store.find('plan');
 	}

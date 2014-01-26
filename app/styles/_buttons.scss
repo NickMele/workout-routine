@@ -1,0 +1,106 @@
+.button {
+	padding-top: modular-scale(-1, $base-size);
+	padding-bottom: modular-scale(-1, $base-size);
+	padding-left: modular-scale(0, $base-size);
+	padding-right: modular-scale(0, $base-size);
+	margin: 0;
+	background: $button-default;
+	border: 1px solid $button-default;
+	border-radius: 2px;
+	display: inline-block;
+	font-weight: 400;
+	font-size: $base-size;
+	color: rgba(255,255,255,1);
+	transition: box-shadow .2s;
+
+	&:hover {
+		box-shadow: 0 0 0 1px rgba(100,100,100,.1);
+		color: rgba(255,255,255,1);
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+
+.button-small {
+	padding-top: modular-scale(-2, $base-size);
+	padding-bottom: modular-scale(-2, $base-size);
+	padding-left: modular-scale(-1, $base-size);
+	padding-right: modular-scale(-1, $base-size);
+}
+
+.button-default {
+	background: $button-default;
+	color: darken($button-default, 30%);
+	border: 1px solid darken($button-default, 3%);
+
+	&:hover {
+		color: darken($button-default, 30%);
+	}
+
+	&:active,
+	&.active {
+		background: darken($button-default, 10%);
+		box-shadow: inset 0 1px 3px darken($button-default, 13%);
+		color: rgba(230,230,230,.95);
+		border: 1px solid darken($button-default, 13%);
+	}
+}
+.button-green {
+	background: $button-green;
+	border: 1px solid darken($button-green, 3%);
+
+	&:active,
+	&.active {
+		background: darken($button-green, 10%);
+		box-shadow: inset 0 1px 3px darken($button-green, 13%);
+		border: 1px solid darken($button-green, 13%);
+	}
+}
+.button-blue {
+	background: $button-blue;
+	border: 1px solid darken($button-blue, 3%);
+
+	&:active,
+	&.active {
+		background: darken($button-blue, 10%);
+		box-shadow: inset 0 1px 3px darken($button-blue, 13%);
+		border: 1px solid darken($button-blue, 13%);
+	}
+}
+.button-red {
+	background: $button-red;
+	border: 1px solid darken($button-red, 3%);
+
+	&:active,
+	&.active {
+		background: darken($button-red, 10%);
+		box-shadow: inset 0 1px 3px darken($button-red, 13%);
+		border: 1px solid darken($button-red, 13%);
+	}
+}
+
+
+.button {
+	&.circle {
+		position: relative;
+		&:after {
+			position: absolute;
+			top: 3%;
+			left: -8%;
+			border-radius: 50%;
+			border: 2px solid $button-red;
+			width: 97%;
+			height: 74%;
+			content: "";
+			-webkit-transform: rotate(35deg);
+			-webkit-transform: skew(-22deg,37deg);
+		}
+	}
+
+	&.current-day {
+		color: rgba(0,0,0,.5);
+	}
+}

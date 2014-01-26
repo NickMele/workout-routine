@@ -303,7 +303,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('server', function (target) {
+    grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
@@ -315,6 +315,17 @@ module.exports = function (grunt) {
             'express',
             'connect:livereload',
             'open',
+            'watch',
+        ]);
+    });
+
+    grunt.registerTask('reserve', function (target) {
+        grunt.task.run([
+            'clean:server',
+            'concurrent:server',
+            'neuter:app',
+            'express',
+            'connect:livereload',
             'watch',
         ]);
     });

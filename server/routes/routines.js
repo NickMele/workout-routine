@@ -1,9 +1,32 @@
-var Routine = require('../models/routine').Routine;
+var Routine = require('../models/routine').Routine,
+    Weekday = require('../models/weekday').Weekday;
 
 exports.index = function(req, res) {
-	Routine.find({}, function(err, docs) {
+
+    var conditions = {}
+
+    if (req.query.ids) {
+        conditions._id = { $in: req.query.ids };
+    }
+
+	Routine.find(conditions, function(err, docs) {
+        var response = {};
+
 		if(!err) {
-			res.json(200, { routines: docs });
+
+            response.routines = docs;
+
+            // side load the weekdays with this request
+            Weekday.find({}, function(err, docs) {
+                if(!err) {
+
+                    response.weekdays = docs;
+
+                    res.json(200, response);
+                } else {
+                    res.json(500, { message: err });
+                }
+            });
 		} else {
 			res.json(500, { message: err });
 		}
@@ -35,12 +58,26 @@ exports.findById = function(req, res) {
     console.log('Retrieving routine: ' + id);
 
     Routine.findById(id, function(err, routine) {
+        var response = {};
 
-    	if (!err) {
-    		res.json(200, { routines: routine });
-    	} else {
-    		res.json(500, { message: err });
-    	}
+        if(!err) {
+
+            response.routines = routine;
+
+            // side load the weekdays with this request
+            Weekday.find({}, function(err, docs) {
+                if(!err) {
+
+                    response.weekdays = docs;
+
+                    res.json(200, response);
+                } else {
+                    res.json(500, { message: err });
+                }
+            });
+        } else {
+            res.json(500, { message: err });
+        }
 
     });
 
@@ -49,7 +86,7 @@ exports.findById = function(req, res) {
 exports.update = function(req, res) {
 
 	var id = req.params.id,
-    	routine = req.body;
+    	routine = req.body.routine;
 
     console.log('Updating routine: ' + id);
     console.log(JSON.stringify(routine));

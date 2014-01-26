@@ -1,0 +1,10 @@
+<ul class="link-list">
+	{{#each routine in model}}
+		<li>
+			{{#link-to "routine" routine}}{{routine.name}}{{/link-to}}
+			<p>{{routine.description}}</p>
+		</li>
+	{{/each}}
+</ul>
+
+{{outlet}}

@@ -1,7 +1,14 @@
 var Plan = require('../models/plan').Plan;
 
 exports.index = function(req, res) {
-    Plan.find({}, function(err, docs) {
+
+    var conditions = {}
+
+    if (req.query.ids) {
+        conditions._id = { $in: req.query.ids };
+    }
+
+    Plan.find(conditions, function(err, docs) {
         if(!err) {
             res.json(200, { plans: docs });
         } else {

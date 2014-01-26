@@ -1,0 +1,10 @@
+<form {{action "save" on="submit"}}>
+	{{input value=name}}
+
+	{{textarea value=description}}
+
+	{{view Ember.Checkbox checkedBinding="active"}} Acitve
+
+	<input type="submit" value="save"/>
+    <a {{action "cancel"}}>Cancel</a>
+</form>

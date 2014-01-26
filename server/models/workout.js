@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 var workoutSchema = new Schema({
     name : { type: String, required: true, trim: true },
-	description : { type: String, required: true },
+	description : { type: String, required: false },
 	dateCreated : { type: Date, required: true, default: Date.now },
 },
 {
