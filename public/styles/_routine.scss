@@ -1,0 +1,84 @@
+.routine-details {
+	@extend .clearfix;
+
+	.summary,
+	.log-history {
+		box-sizing: border-box;
+		width: 50%;
+		float: left;
+		padding: modular-scale(.5, $base-size);
+		color: rgba(100,100,100,.9);
+	}
+
+	.summary {
+
+		.upcoming {
+			padding-top: modular-scale(0, $base-size);
+		}
+
+		.action {
+			padding-top: modular-scale(0, $base-size);
+
+			.button-group {
+				margin-top: modular-scale(-2, $base-size);
+			}
+		}
+
+	}
+
+	.log-history {
+
+		.log {
+			padding-bottom: modular-scale(0, $base-size);
+
+			.timestamp {
+				color: rgba(100,100,100,.5);
+			}
+		}
+
+	}
+
+}
+
+.link-list {
+	.log-item {
+		a {
+			border-left: 1px solid $border-color-light;
+			margin-left: modular-scale(3, $base-size);
+		}
+
+		.log-checkbox {
+			text-align: center;
+			/* auto, since non-WebKit browsers doesn't support input styling */
+			height: auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: auto 0;
+			width: modular-scale(3, $base-size);
+			/* Mobile Safari */
+			border: none;
+			-webkit-appearance: none;
+			-ms-appearance: none;
+			-o-appearance: none;
+			appearance: none;
+
+			&:after {
+				content: '✔';
+				color: rgba(200, 200, 200,1);
+				text-shadow: 0 -1px 0 rgba(200, 200, 200,1);
+				font-size: modular-scale(2, $base-size);
+				line-height: modular-scale(2.75,$base-size);
+			}
+
+			&:checked {
+				background: none;
+			}
+
+			&:checked:after {
+				color: $green;
+				position: relative;
+			}
+		}
+	}
+}

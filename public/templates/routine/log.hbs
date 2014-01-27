@@ -1,0 +1,19 @@
+<div class="header">
+	<div class="button-group float-right">
+		<a {{action "complete"}} class="button button-small button-green">Complete log</a>
+		<a {{action "save"}} class="button button-small button-blue">Save</a>
+		<a {{action "discard"}} class="button button-small button-red">Discard</a>
+	</div>
+
+	New log entry
+	<div class="sub-title">{{#link-to "routine"}}{{controllers.routine.model.name}}{{/link-to}}</div>
+</div>
+
+<ul class="link-list">
+	{{#each entry in entries}}
+		<li class="log-item">
+			{{view Ember.Checkbox checkedBinding="entry.completed" class="float-left log-checkbox"}}
+			<a {{action "openPanel" "workout" entry.workout}}>{{entry.workout.name}}</a>
+		</li>
+	{{/each}}
+</ul>

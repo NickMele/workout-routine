@@ -4,7 +4,7 @@ var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var path = require('path');
 var mountFolder = function (connect, dir) {
-    return connect.static(path.resolve(dir));
+    return express.static(path.resolve(dir));
 };
 
 // # Globbing
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        app: 'app',
+        app: 'public',
         dist: 'dist'
     };
 
@@ -52,46 +52,26 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        connect: {
-            options: {
-                port: 9000,
-                // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
-            },
+        autoprefixer: {
             livereload: {
+                src: '<%= yeoman.app %>/styles/*.css'
+            }
+        },
+        express: {
+            server: {
                 options: {
-                    middleware: function (connect) {
-                        return [
-                            lrSnippet,
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, yeomanConfig.app)
-                        ];
-                    }
-                }
-            },
-            test: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'test')
-                        ];
-                    }
-                }
-            },
-            dist: {
-                options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, yeomanConfig.dist)
-                        ];
-                    }
+                    port: 9000,
+                    // change this to '0.0.0.0' to access the server from outside
+                    hostname: '*',
+                    server: path.resolve('./', 'app.js'),
+                    bases: ['./public', './.tmp'],
+                    livereload: true
                 }
             }
         },
         open: {
             server: {
-                path: 'http://localhost:<%= connect.options.port %>'
+                path: 'http://localhost:<%= express.server.options.port %>'
             }
         },
         clean: {
@@ -134,7 +114,7 @@ module.exports = function (grunt) {
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
-                importPath: 'app/bower_components',
+                importPath: 'public/bower_components',
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 httpFontsPath: '/styles/fonts',
@@ -286,19 +266,11 @@ module.exports = function (grunt) {
             app: {
                 options: {
                     filepathTransform: function (filepath) {
-                        return 'app/' + filepath;
+                        return 'public/' + filepath;
                     }
                 },
                 src: '<%= yeoman.app %>/scripts/app.js',
                 dest: '.tmp/scripts/combined-scripts.js'
-            }
-        },
-        express: {
-            api: {
-                options: {
-                    server: path.resolve('./server', 'server.js'),
-                    port: 9001
-                }
             }
         }
     });
@@ -313,7 +285,7 @@ module.exports = function (grunt) {
             'concurrent:server',
             'neuter:app',
             'express',
-            'connect:livereload',
+            //'connect:livereload',
             'open',
             'watch',
         ]);
@@ -325,7 +297,7 @@ module.exports = function (grunt) {
             'concurrent:server',
             'neuter:app',
             'express',
-            'connect:livereload',
+            // 'connect:livereload',
             'watch',
         ]);
     });
