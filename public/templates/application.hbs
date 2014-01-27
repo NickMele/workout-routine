@@ -1,0 +1,27 @@
+<div class="wrapper">
+
+	<div class="sidebar">
+		<div class="box">
+			<ul class="navigation">
+				<li>
+					{{#link-to "plans"}}My plans{{/link-to}}
+				</li>
+				<li>
+					<a href="#">My Schedule</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+    <div class="main-content">
+    	<div class="box">
+    		{{outlet}}
+    	</div>
+    </div>
+
+    <div {{bind-attr class=":panel panelOpen:open:closed"}}>
+		<div class="close-panel"><button {{action "closePanel"}}>Close</button></div>
+		<div class="panel-content">{{outlet panel}}</div>
+	</div>
+
+</div>
