@@ -5,5 +5,6 @@ WorkoutRoutine.Log = DS.Model.extend({
   	}),
     entries			: DS.hasMany('entry', {embedded: 'always'}),
     completed		: DS.attr('boolean'),
+    skipped			: DS.attr('boolean'),
     dateCompleted	: DS.attr('date')
 });

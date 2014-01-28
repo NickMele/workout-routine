@@ -15,7 +15,8 @@
 			border-bottom: none;
 		}
 
-		a {
+		> a,
+		> span {
 			display: block;
 			padding: modular-scale(.5, $base-size);
 		}

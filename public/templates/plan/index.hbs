@@ -4,7 +4,7 @@
 	{{else}}
 		<button {{bind-attr class=":button :button-small :float-right active:button-green:button-red"}} {{action "showOptions"}}>{{planState}}</button>
 	{{/if}}
-	<a {{action "openPanel" "plan.edit" model}} class="button button-small button-default float-right">Edit</a>
+	<button {{action "openPanel" "plan.edit" model}} class="button button-small button-default float-right">Edit</button>
 
 	{{name}}
 </div>

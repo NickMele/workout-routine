@@ -87,25 +87,68 @@ WorkoutRoutine.PlanIndexController = Ember.ObjectController.extend({
 WorkoutRoutine.PlanEditController = Em.ObjectController.extend({
 
 	actions: {
+		toggleStatus: function() {
+
+			var self = this.get('model'),
+				status = self.get('active');
+
+			// we want to toggle the status
+			self.set('active', !status);
+
+		},
 		cancel: function() {
 			var self = this,
-				plan = this.get('model');
+				plan = this.get('model'),
+				routines = plan.get('routines');
 
 			plan.rollback();
 
+			routines.forEach(function(item) {
+				if (item.get('isDirty')) {
+					item.rollback();
+				}
+			});
+
 			self.send('closePanel');
+
 		},
 		save: function() {
 			var self = this,
-				plan = this.get('model');
+				plan = this.get('model'),
+				routines = plan.get('routines');
 
 			// make sure we get all routines before saving
-			plan.get('routines').then(function() {
+			routines.then(function() {
+
+				routines.forEach(function(item) {
+					if (item.get('isDirty')) {
+						item.get('workouts').then(function() {
+							item.save();
+						});
+					}
+				});
+
 				plan.save();
 				// close the panel
 				self.send('closePanel');
 			});
+		},
+		deleteRoutine: function(routine) {
+
+			var self = this,
+				plan = this.get('model')
+
+			plan.get('routines').removeObject(routine);
+
+			plan.save();
+
+			routine.destroyRecord();
+
 		}
-	}
+	},
+
+	planState: function() {
+		return (this.get('active')) ? "active" : "inactive";
+	}.property('active'),
 
 });

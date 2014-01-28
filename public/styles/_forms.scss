@@ -1,0 +1,45 @@
+.form {
+	input[type=text],
+	textarea {
+		width: 100%;
+		box-sizing: border-box;
+		padding: modular-scale(0, $base-size);
+		background: rgba(255,255,255,.95);
+		border-radius: 2px;
+		border: 1px solid $border-color-light;
+		margin-bottom: modular-scale(.5, $base-size);
+		box-shadow: inset 0 0 $base-size 0 rgba(0,0,0,.1);
+	}
+
+	textarea {
+		height: modular-scale(5, $base-size);
+	}
+
+	.form-actions {
+		padding: modular-scale(.5, $base-size);
+		border-bottom: 1px solid $border-color-light;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.form-inputs {
+		padding: modular-scale(.5, $base-size);
+
+		h3 {
+			padding-left: 0;
+			padding-right: 0;
+			padding-bottom: modular-scale(.5, $base-size);
+		}
+
+		.input-with-button {
+			@extend .clearfix;
+			position: relative;
+
+			.button {
+				position: absolute;
+				top: (modular-scale(0, $base-size)*.66);
+				right: (modular-scale(0, $base-size)*.66);
+			}
+		}
+	}
+}

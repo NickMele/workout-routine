@@ -5,13 +5,13 @@
 
 	.description {
 		box-sizing: border-box;
-		width: 66%;
+		width: 50%;
 		float: left;
 	}
 
 	.quick-schedule {
 		box-sizing: border-box;
-		width: 33%;
+		width: 50%;
 		float: left;
 
 		.quick-schedule-title {
@@ -29,12 +29,12 @@
 				color: $base-font-color;
 				display: block;
 				float: left;
-				width: 50%;
+				width: 33%;
 			}
 			.items {
 				display: inline-block;
 				float: left;
-				width: 50%;
+				width: 66%;
 			}
 		}
 

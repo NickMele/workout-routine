@@ -3,6 +3,7 @@ html {
 	color: $base-font-color;
 	background: rgba(0,0,0,.65);
 	background: $application-background top left repeat;
+	background-attachment: fixed;
 }
 
 body {
@@ -121,8 +122,8 @@ a {
 .panel {
 	position: fixed;
 	top: 0;
-	right: -25%;
-	width: 25%;
+	right: -33%;
+	width: 33%;
 	height: 100%;
 	box-sizing: border-box;
 	@include single-box-shadow($shadow-color, -1px, 0, $shadow-blur);
@@ -131,6 +132,11 @@ a {
 	// transition: right 200ms cubic-bezier(0.77, 0, 0.175, 1); /* easeOutBack */
 	transition: right 200ms cubic-bezier(.5, 0, .5, 1); /* seamless */
 	-webkit-backface-visibility: hidden;
+
+	.panel-content {
+		overflow-y: auto;
+		height: 100%;
+	}
 
 	&.open {
 		right: 0;

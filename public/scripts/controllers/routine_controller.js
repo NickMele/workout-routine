@@ -159,6 +159,18 @@ WorkoutRoutine.RoutineEditController = Em.ObjectController.extend({
 				// close the panel
 				self.send('closePanel');
 			});
+		},
+		deleteWorkout: function(workout) {
+
+			var self = this,
+				routine = this.get('model')
+
+			routine.get('workouts').removeObject(workout);
+
+			routine.save();
+
+			workout.destroyRecord();
+
 		}
 	}
 

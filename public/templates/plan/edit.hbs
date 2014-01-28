@@ -1,10 +1,25 @@
-<form {{action "save" on="submit"}}>
-	{{input value=name}}
+{{!-- <div class="close-panel"><button {{action "cancel"}}>Close</button></div> --}}
 
-	{{textarea value=description}}
+<form {{action "save" on="submit"}} class="form">
+	<div class="form-actions">
+		<input type="submit" value="Save Plan" class="button button-blue"/>
+		<button class="button button-default float-right" {{action "cancel"}}>Cancel</button>
+	</div>
 
-	{{view Ember.Checkbox checkedBinding="active"}} Acitve
+	<div class="form-inputs">
+		{{input value=name placeholder="Give your plan a name..."}}
 
-	<input type="submit" value="save"/>
-    <a {{action "cancel"}}>Cancel</a>
+		{{textarea value=description placeholder="Give it a short description..."}}
+
+		<button {{bind-attr class=":button active:button-green:button-red"}} {{action "toggleStatus"}}>{{planState}}</button>
+
+		<h3>Routines</h3>
+
+		{{#each routine in routines}}
+			<div class="input-with-button">
+				<button {{action "deleteRoutine" routine}} class="button button-small button-red">Delete</button>
+				{{input value=routine.name placeholder="Routine name"}}
+			</div>
+		{{/each}}
+	</div>
 </form>

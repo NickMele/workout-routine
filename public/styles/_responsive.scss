@@ -1,0 +1,58 @@
+@media(max-width: 1024px) {
+
+	html {
+		font-size: 70%;
+	}
+
+	.wrapper {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 10rem;
+	}
+
+	.main-content {
+		float: none;
+		width: auto;
+		margin-left: 10rem;
+
+		.box {
+			margin-left: 0;
+		}
+	}
+
+	.panel {
+		width: 40%;
+		right: -40%;
+	}
+
+}
+
+@media(max-width: 420px) {
+
+	.box {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.sidebar {
+		position: relative;
+		width: auto;
+		float: none;
+	}
+
+	.main-content {
+		margin-left: 0;
+	}
+
+	.panel {
+		width: 90%;
+		right: -95%;
+	}
+
+}

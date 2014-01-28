@@ -1,10 +1,21 @@
-<div class="routine routine-edit">
-	<form {{action "save" on="submit"}}>
-    	{{input value=model.name}}
+<form {{action "save" on="submit"}} class="form">
+	<div class="form-actions">
+		<input type="submit" value="Save Routine" class="button button-blue"/>
+		<button class="button button-default float-right" {{action "cancel"}}>Cancel</a>
+	</div>
+
+	<div class="form-inputs">
+		{{input value=model.name}}
 
 		{{textarea value=model.description}}
 
-		<input type="submit" value="save"/>
-        <a {{action "cancel"}}>Cancel</a>
-	</form>
-</div>
+		<h3>Routines</h3>
+
+		{{#each workout in workouts}}
+			<div class="input-with-button">
+				<button {{action "deleteWorkout" workout}} class="button button-small button-red">Delete</button>
+				{{input value=workout.name placeholder="Workout name"}}
+			</div>
+		{{/each}}
+	</div>
+</form>

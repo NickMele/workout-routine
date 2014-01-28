@@ -6,6 +6,7 @@ var logSchema = new Schema({
 	dateCreated 	: { type: Date, required: true, default: Date.now },
     entries			: [{ type: Schema.Types.ObjectId, ref: 'entry' }],
     completed		: { type: Boolean, default: false },
+    skipped			: { type: Boolean, default: false },
     dateCompleted	: { type: Date }
 },
 {
